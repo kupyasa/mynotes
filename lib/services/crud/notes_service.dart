@@ -21,6 +21,7 @@ class NotesService {
   Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
 
   Future<DatabaseUser> getOrCreateUser({required String email}) async {
+    await _ensureDbIsOpen();
     final db = _getDatabaseOrThrow();
 
     try {
@@ -322,7 +323,7 @@ const idColumn = 'id';
 const emailColumn = 'email';
 const userIdColumn = 'user_id';
 const textColumn = 'text';
-const isSyncedWithCloudColumn = 'is_synced_with_column';
+const isSyncedWithCloudColumn = 'is_synced_with_cloud';
 const createUserTable = ''' 
         CREATE TABLE IF NOT EXISTS "user" (
 	      "id"	INTEGER NOT NULL UNIQUE,
