@@ -19,14 +19,15 @@ Future<T?> showGenericDialog<T>({
           (optionTitle) {
             final T value = options[optionTitle];
             return TextButton(
-                onPressed: () {
-                  if (value != null) {
-                    Navigator.of(context).pop(value);
-                  } else {
-                    Navigator.of(context).pop();
-                  }
-                },
-                child: Text(optionTitle));
+              onPressed: () {
+                if (value != null) {
+                  Navigator.of(context).pop(value);
+                } else {
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text(optionTitle),
+            );
           },
         ).toList(),
       );
